@@ -9,6 +9,13 @@ export class StudentResolver {
     private studentService: StudentService
   ) {}
 
+  @Query(returns => StudentType)
+  async student(
+    @Args('id') id: string,
+  ) {
+    return this.studentService.getStudent(id);
+  }
+
   @Query(returns => [StudentType])
   async students() {
     return this.studentService.getStudents();
